@@ -1,0 +1,11 @@
+<h1>Product List</h1>
+
+<div th:each="p : ${products}">
+    <h3 th:text="${p.name}"></h3>
+    <p th:text="${p.price}"></p>
+
+    <a th:href="@{'/product/' + ${p.id}}">View Detail</a>
+</div>
+
+<hr>
+<p>Cart items: <span th:text="${cart.totalQuantity}"></span></p>
