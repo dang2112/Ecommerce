@@ -17,6 +17,9 @@ public class ProductController {
     @GetMapping("/product/{id}")
     public String detail(@PathVariable Long id, Model model) {
         Product product = repo.findById(id);
+        if (product == null) {
+            return "redirect:/";
+        }
         model.addAttribute("product", product);
         return "product-detail";
     }

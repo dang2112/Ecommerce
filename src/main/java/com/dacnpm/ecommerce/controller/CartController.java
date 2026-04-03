@@ -26,6 +26,9 @@ public class CartController {
     public String addToCart(@PathVariable Long id, @ModelAttribute("cart") Cart cart) {
 
         Product product = repo.findById(id);
+        if (product == null) {
+            return "redirect:/";
+        }
         cart.addProduct(product);
 
         return "redirect:/";

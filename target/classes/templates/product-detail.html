@@ -1,9 +1,17 @@
-<h1 th:text="${product.name}"></h1>
-<p th:text="${product.description}"></p>
-<p th:text="${product.price}"></p>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Detail</title>
+</head>
+<body>
+    <h1 th:text="${product.name}"></h1>
+    <p th:text="${product.description}"></p>
+    <p th:text="${#numbers.formatDecimal(product.price, 1, 'COMMA', 2, 'POINT')} + ' $'"></p>
 
-<form th:action="@{'/cart/add/' + ${product.id}}" method="post">
-    <button type="submit">Add to Cart</button>
-</form>
+    <form th:action="@{/cart/add/{id}(id=${product.id})}" method="post">
+        <button type="submit">Add to Cart</button>
+    </form>
 
-<a href="/">Back</a>
+    <a href="/">Back</a>
+</body>
+</html>
